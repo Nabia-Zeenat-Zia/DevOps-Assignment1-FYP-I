@@ -1,13 +1,12 @@
 // jest.config.mjs
 export default {
-  preset: 'node',
+  testEnvironment: 'node',  // Correct way to set up Jest for a Node.js backend
   transform: {
-    '^.+\\.[t|j]sx?$': 'babel-jest',  // Transform .js, .jsx, .ts, .tsx files
+    '^.+\\.[tj]sx?$': 'babel-jest',  // Correct regex for transforming files
   },
   transformIgnorePatterns: [
-    "node_modules/(?!react-native|@react-native|react-navigation)",  // Don't ignore React Native modules
+    "node_modules/(?!react-native|@react-native|react-navigation)",  // Keep if using React Native (Remove if unnecessary)
   ],
-  testEnvironment: 'node',
   globals: {
     __DEV__: true,
   },
