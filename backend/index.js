@@ -1,24 +1,28 @@
 import express from "express";
 import dataSource from "./data-source.js";
-import authRouter from "./src/Routes/Auth.routes.js";
-import cors from "cors";
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-
-// Test Route
 app.get("/", (req, res) => {
-  return res.send("Server is Live");
+  res.status(200).send("OK");
 });
 
-// Active Routes
-app.use("/auth", authRouter);
+// Server start logic
+const startServer = async () => {
+  try {
+    await dataSource.connect(); // Ensure the DB is connected before starting the server
+    app.listen(3000, () => {
+      console.log("Server is running on port 3000");
+    });
+  } catch (error) {
+    console.error("Error starting server:", error);
+  }
+};
 
-await dataSource.connect();
+// Start server only in non-test environments
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+}
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+export default app;
+
