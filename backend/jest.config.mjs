@@ -1,6 +1,6 @@
 // jest.config.mjs
 export default {
-  preset: 'react-native',
+  preset: 'node',
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',  // Transform .js, .jsx, .ts, .tsx files
   },

@@ -25,7 +25,9 @@ jobs:
       - name: Build Docker image for Backend
         run: |
           cd backend
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend:$GITHUB_SHA .
+          docker build -t backend:latest . 
+          docker tag backend:latest ${{ secrets.DOCKER_USERNAME }}/backend:$GITHUB_SHA  t
+          # docker build -t ${{ secrets.DOCKER_USERNAME }}/backend:$GITHUB_SHA .
 
   # Build Frontend Container
   build_frontend:
@@ -43,7 +45,9 @@ jobs:
       - name: Build Docker image for Frontend
         run: |
           cd frontend/Green-Nest
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:$GITHUB_SHA .
+          docker build -t frontend:latest .   # ✅ Build locally
+          docker tag frontend:latest ${{ secrets.DOCKER_USERNAME }}/frontend:$GITHUB_SHA  
+          # docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:$GITHUB_SHA .
 
   # Run Unit Tests for Backend
   test_backend:
