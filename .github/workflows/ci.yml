@@ -86,12 +86,17 @@ jobs:
         run: |
           cd frontend/Green-Nest
           npm install
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
       - name: Start Services
         run: docker-compose up -d
       - name: Run Unit Tests for Frontend
         run: |
           cd frontend/Green-Nest
           npm test
+
 
   # Run Linter and SAST Jobs
   lint_and_sast:
@@ -129,6 +134,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Pull or Build Backend Image
+        run: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/backend:$GITHUB_SHA || \
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend:$GITHUB_SHA backend
       - name: Push Backend Docker image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/backend:$GITHUB_SHA
