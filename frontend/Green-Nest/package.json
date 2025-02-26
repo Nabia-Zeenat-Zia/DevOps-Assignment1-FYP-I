@@ -2,8 +2,10 @@
   "name": "green-nest",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "expo start",
+    "test": "jest --config=jest.config.mjs",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -24,7 +26,7 @@
     "lottie-react-native": "^7.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-native": "0.76.3",
+    "react-native": "^0.76.7",
     "react-native-gesture-handler": "^2.21.2",
     "react-native-paper": "^5.12.5",
     "react-native-safe-area-context": "^4.14.0",
@@ -35,7 +37,19 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@react-native-community/cli": "^16.0.0"
+    "@babel/plugin-transform-typescript": "^7.26.8",
+    "@babel/preset-flow": "^7.25.9",
+    "@babel/preset-react": "^7.26.3",
+    "@eslint/js": "^9.21.0",
+    "@react-native-community/cli": "^16.0.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "jest-transform-stub": "^2.0.0",
+    "metro-react-native-babel-preset": "^0.77.0",
+    "react-test-renderer": "^18.3.1"
   },
   "private": true
 }
