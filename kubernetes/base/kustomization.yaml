@@ -1,0 +1,15 @@
+resources:
+  - backend/deployment.yaml
+  - backend/service.yaml
+  - frontend/deployment.yaml
+  - frontend/service.yaml
+  - database/statefulset.yaml
+  - database/service.yaml
+  - config/configmap.yaml
+  - config/secret.yaml
+  - ingress.yaml
+  - istio/virtualservice-backend.yaml
+  - istio/destinationrule-backend.yaml
+  - istio/peer-authentication.yaml
+
+namespace: default

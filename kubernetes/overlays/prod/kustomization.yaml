@@ -1,0 +1,8 @@
+namespace: prod
+resources:
+  - ../../base
+  - prod-namespace.yaml
+patchesStrategicMerge:
+  - patch-deployment.yaml
+  - patch-backend-v1.yaml
+  - patch-backend-v2.yaml
